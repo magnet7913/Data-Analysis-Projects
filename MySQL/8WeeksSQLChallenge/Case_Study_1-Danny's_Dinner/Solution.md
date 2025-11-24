@@ -28,11 +28,11 @@ group by 1
 
 #### Result set:
 
-| customer_id | total_sales |
-| ----------- | ----------- |
-| A           | $76         |
-| B           | $74         |
-| C           | $36         |
+| customer_id | spent |
+|-------------|-------|
+| A           | 76    |
+| B           | 74    |
+| C           | 36    |
 
 ---
 
@@ -47,9 +47,15 @@ group by 1
 
 #### Result set
 
+| customer_id | count_date |
+|-------------|------------|
+| A           | 4          |
+| B           | 6          |
+| C           | 2          |
+
 ---
 
-### 3
+### 3. What was the first item from the menu purchased by each customer?
 
 ```sql
 select cid, pn from (
@@ -63,12 +69,18 @@ where rn = 1
 
 #### Result set
 
+| cid | pn    |
+|-----|-------|
+| A   | sushi |
+| B   | curry |
+| C   | ramen |
+
 ---
 
-### 4
+### 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 
 ```sql
-select m.product_name, count(s.product_id)
+select m.product_name, count(s.product_id) as quantity
 from sales s
 join menu m
 on
@@ -80,9 +92,15 @@ order by 2 desc
 
 #### Result set
 
+| product_name | quantity |
+|--------------|----------|
+| ramen        | 8        |
+| curry        | 4        |
+| sushi        | 3        |
+
 ---
 
-### 5
+### 5. Which item was the most popular for each customer?
 
 ```sql
 select cid, pn
@@ -100,9 +118,17 @@ where rn = 1
 
 #### Result set
 
+| cid | pn    |
+|-----|-------|
+| A   | ramen |
+| B   | curry |
+| B   | sushi |
+| B   | ramen |
+| C   | ramen |
+
 ---
 
-### 6
+### 6. Which item was purchased first by the customer after they became a member?
 
 ```sql
 select t.cid, m.product_name
@@ -119,9 +145,14 @@ where rn = 1
 
 #### Result set
 
+| cid | product_name |
+|-----|--------------|
+| B   | sushi        |
+| A   | curry        |
+
 ---
 
-### 7
+### 7. Which item was purchased just before the customer became a member?
 
 ```sql
 select t.cid, m.product_name
@@ -138,9 +169,14 @@ where rn = 1
 
 #### Result set
 
+| cid | product_name |
+|-----|--------------|
+| A   | sushi        |
+| B   | sushi        |
+
 ---
 
-### 8
+### 8. What is the total items and amount spent for each member before they became a member?
 
 ```sql
 select s.customer_id,count(s.product_id) count_pre_mem, sum(me.price) spent_pre_mem
@@ -156,12 +192,17 @@ group by 1
 
 #### Result set
 
+| customer_id | count_pre_mem | spent_pre_mem |
+|-------------|---------------|---------------|
+| B           | 3             | 40            |
+| A           | 2             | 25            |
+
 ---
 
-### 9
+### 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
 ```sql
-select t.cid, sum(t.earned_point)
+select t.cid, sum(t.earned_point) as points
 from (select s.customer_id cid, s.product_id pid,
 	case when me.product_name = 'suchi' then 20*me.price
     else 10*me.price
@@ -178,9 +219,14 @@ group by 1
 
 #### Result set
 
+| cid | points |
+|-----|--------|
+| B   | 340    |
+| A   | 510    |
+
 ---
 
-### 10
+### 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 
 ```sql
 select t.cid, sum(
@@ -199,5 +245,10 @@ group by 1
 ```
 
 #### Result set
+
+| cid | ep    |
+|-----|-------|
+| B   | 560   |
+| A   | 1020  |
 
 ---

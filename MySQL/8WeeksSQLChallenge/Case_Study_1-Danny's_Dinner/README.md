@@ -27,7 +27,7 @@ Three key datasets for this case study
 - members: The members table captures the join_date when a customer_id joined the beta version of the Danny’s Diner loyalty program.
 
 ## Entity Relationship Diagram
-![alt text]()
+![alt text](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case_Study_1-Danny's_Dinner/Case1Rela.png)
 
 ## Case Study Questions
 1. What is the total amount each customer spent at the restaurant?
