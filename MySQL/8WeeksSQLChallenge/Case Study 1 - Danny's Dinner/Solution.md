@@ -18,11 +18,14 @@
 ### 1. What is the total amount each customer spent at the restaurant?
 
 ```sql
-select s.customer_id, sum(m.price) as spent
-from sales s
-join menu m on
-s.product_id = m.product_id
-group by 1
+SELECT
+  s.customer_id,
+  SUM(m.price) AS spent
+FROM
+  sales s
+  JOIN menu m ON s.product_id = m.product_id
+GROUP BY
+  1
 ;
 ```
 
@@ -39,9 +42,13 @@ group by 1
 ### 2. How many days has each customer visited the restaurant?
 
 ```sql
-select s.customer_id, count(distinct(order_date)) count_date
-from sales s
-group by 1
+SELECT
+  s.customer_id,
+  COUNT(DISTINCT (order_date)) count_date
+FROM
+  sales s
+GROUP BY
+  1
 ;
 ```
 
@@ -58,12 +65,26 @@ group by 1
 ### 3. What was the first item from the menu purchased by each customer?
 
 ```sql
-select cid, pn from (
-select s.customer_id cid, m.product_name pn, row_number() over (partition by s.customer_id order by s.order_date) as rn
-from sales s
-join menu m on
-s.product_id = m.product_id) t
-where rn = 1
+SELECT
+  cid,
+  pn
+FROM
+  (
+    SELECT
+      s.customer_id cid,
+      m.product_name pn,
+      ROW_NUMBER() OVER (
+        PARTITION BY
+          s.customer_id
+        ORDER BY
+          s.order_date
+      ) AS rn
+    FROM
+      sales s
+      JOIN menu m ON s.product_id = m.product_id
+  ) t
+WHERE
+  rn = 1
 ;
 ```
 
@@ -80,13 +101,16 @@ where rn = 1
 ### 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 
 ```sql
-select m.product_name, count(s.product_id) as quantity
-from sales s
-join menu m
-on
-s.product_id = m.product_id
-group by 1
-order by 2 desc
+SELECT
+  m.product_name,
+  COUNT(s.product_id) AS quantity
+FROM
+  sales s
+  JOIN menu m ON s.product_id = m.product_id
+GROUP BY
+  1
+ORDER BY
+  2 DESC
 ;
 ```
 
@@ -103,16 +127,30 @@ order by 2 desc
 ### 5. Which item was the most popular for each customer?
 
 ```sql
-select cid, pn
-from (select 	s.customer_id cid,m.product_name pn,
-		count(s.product_id),
-		rank() over (partition by s.customer_id order by count(s.product_id) desc) as rn
-from sales s
-join menu m
-on
-s.product_id = m.product_id
-group by 1, 2) t
-where rn = 1
+SELECT
+  cid,
+  pn
+FROM
+  (
+    SELECT
+      s.customer_id cid,
+      m.product_name pn,
+      COUNT(s.product_id),
+      RANK() OVER (
+        PARTITION BY
+          s.customer_id
+        ORDER BY
+          COUNT(s.product_id) DESC
+      ) AS rn
+    FROM
+      sales s
+      JOIN menu m ON s.product_id = m.product_id
+    GROUP BY
+      1,
+      2
+  ) t
+WHERE
+  rn = 1
 ;
 ```
 
@@ -131,15 +169,29 @@ where rn = 1
 ### 6. Which item was purchased first by the customer after they became a member?
 
 ```sql
-select t.cid, m.product_name
-from (select s.customer_id cid, s.product_id pid, row_number() over (partition by s.customer_id order by order_date ) as rn
-from sales s
-join members m
-on s.customer_id = m.customer_id
-where s.order_date >= m.join_date) t
-join menu m
-on t.pid = m.product_id
-where rn = 1
+SELECT
+  t.cid,
+  m.product_name
+FROM
+  (
+    SELECT
+      s.customer_id cid,
+      s.product_id pid,
+      ROW_NUMBER() OVER (
+        PARTITION BY
+          s.customer_id
+        ORDER BY
+          order_date
+      ) AS rn
+    FROM
+      sales s
+      JOIN members m ON s.customer_id = m.customer_id
+    WHERE
+      s.order_date >= m.join_date
+  ) t
+  JOIN menu m ON t.pid = m.product_id
+WHERE
+  rn = 1
 ;
 ```
 
@@ -155,15 +207,29 @@ where rn = 1
 ### 7. Which item was purchased just before the customer became a member?
 
 ```sql
-select t.cid, m.product_name
-from (select s.customer_id cid, s.product_id pid, row_number() over (partition by s.customer_id order by order_date desc ) as rn
-from sales s
-join members m
-on s.customer_id = m.customer_id
-where s.order_date < m.join_date) t
-join menu m
-on t.pid = m.product_id
-where rn = 1
+SELECT
+  t.cid,
+  m.product_name
+FROM
+  (
+    SELECT
+      s.customer_id cid,
+      s.product_id pid,
+      ROW_NUMBER() OVER (
+        PARTITION BY
+          s.customer_id
+        ORDER BY
+          order_date DESC
+      ) AS rn
+    FROM
+      sales s
+      JOIN members m ON s.customer_id = m.customer_id
+    WHERE
+      s.order_date < m.join_date
+  ) t
+  JOIN menu m ON t.pid = m.product_id
+WHERE
+  rn = 1
 ;
 ```
 
@@ -179,14 +245,18 @@ where rn = 1
 ### 8. What is the total items and amount spent for each member before they became a member?
 
 ```sql
-select s.customer_id,count(s.product_id) count_pre_mem, sum(me.price) spent_pre_mem
-from sales s
-join members m
-on s.customer_id = m.customer_id
-join menu me
-on me.product_id = s.product_id
-where s.order_date < m.join_date
-group by 1
+SELECT
+  s.customer_id,
+  COUNT(s.product_id) count_pre_mem,
+  SUM(me.price) spent_pre_mem
+FROM
+  sales s
+  JOIN members m ON s.customer_id = m.customer_id
+  JOIN menu me ON me.product_id = s.product_id
+WHERE
+  s.order_date < m.join_date
+GROUP BY
+  1
 ;
 ```
 
@@ -202,18 +272,27 @@ group by 1
 ### 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
 ```sql
-select t.cid, sum(t.earned_point) as points
-from (select s.customer_id cid, s.product_id pid,
-	case when me.product_name = 'suchi' then 20*me.price
-    else 10*me.price
-    end as earned_point
-from sales s
-join members m
-on s.customer_id = m.customer_id
-join menu me
-on s.product_id = me.product_id
-where s.order_date >= m.join_date) t
-group by 1
+SELECT
+  t.cid,
+  SUM(t.earned_point) AS points
+FROM
+  (
+    SELECT
+      s.customer_id cid,
+      s.product_id pid,
+      CASE
+        WHEN me.product_name = 'sushi' THEN 20 * me.price
+        ELSE 10 * me.price
+      END AS earned_point
+    FROM
+      sales s
+      JOIN members m ON s.customer_id = m.customer_id
+      JOIN menu me ON s.product_id = me.product_id
+    WHERE
+      s.order_date >= m.join_date
+  ) t
+GROUP BY
+  1
 ;
 ```
 
@@ -221,7 +300,7 @@ group by 1
 
 | cid | points |
 |-----|--------|
-| B   | 340    |
+| B   | 440    |
 | A   | 510    |
 
 ---
@@ -229,19 +308,31 @@ group by 1
 ### 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 
 ```sql
-select t.cid, sum(
-    case when t.od <= adddate(t.jd,7) then 20*me.price
-    when me.product_name = 'sushi' then 20*me.price
-    else 10*me.price
-    end) as ep
-from (select s.customer_id cid, s.product_id pid, s.order_date od, m.join_date jd
-from sales s
-join members m
-on s.customer_id = m.customer_id
-where s.order_date >= m.join_date) t
-join menu me
-on me.product_id = t.pid
-group by 1
+SELECT
+  t.cid,
+  SUM(
+    CASE
+      WHEN t.od <= adddate (t.jd, 7) THEN 20 * me.price
+      WHEN me.product_name = 'sushi' THEN 20 * me.price
+      ELSE 10 * me.price
+    END
+  ) AS ep
+FROM
+  (
+    SELECT
+      s.customer_id cid,
+      s.product_id pid,
+      s.order_date od,
+      m.join_date jd
+    FROM
+      sales s
+      JOIN members m ON s.customer_id = m.customer_id
+    WHERE
+      s.order_date >= m.join_date
+  ) t
+  JOIN menu me ON me.product_id = t.pid
+GROUP BY
+  1
 ```
 
 #### Result set
