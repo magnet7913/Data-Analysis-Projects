@@ -23,11 +23,54 @@ He plans on using these insights to help him decide whether he should expand the
 ## Datasets used
 Three key datasets for this case study
 - sales: The sales table captures all customer_id level purchases with an corresponding order_date and product_id information for when and what menu items were ordered.
+
+<div align="center">
+
+| customer_id | order_date  | product_id |
+|-------------|-------------|------------|
+| A           | 2021-01-01  | 1          |
+| A           | 2021-01-01  | 2          |
+| A           | 2021-01-07  | 2          |
+| A           | 2021-01-10  | 3          |
+| A           | 2021-01-11  | 3          |
+| A           | 2021-01-11  | 3          |
+| B           | 2021-01-01  | 2          |
+| B           | 2021-01-02  | 2          |
+| B           | 2021-01-04  | 1          |
+| B           | 2021-01-11  | 1          |
+| B           | 2021-01-16  | 3          |
+| B           | 2021-02-01  | 3          |
+| C           | 2021-01-01  | 3          |
+| C           | 2021-01-01  | 3          |
+| C           | 2021-01-07  | 3          |
+
+</div>
+
 - menu: The menu table maps the product_id to the actual product_name and price of each menu item.
+
+<div align="center">
+
+| product_id | product_name | price |
+|------------|--------------|-------|
+| 1          | sushi        | 10    |
+| 2          | curry        | 15    |
+| 3          | ramen        | 12    |
+
+</div>
+
 - members: The members table captures the join_date when a customer_id joined the beta version of the Danny’s Diner loyalty program.
 
+<div align="center">
+
+| customer_id | join_date  |
+|-------------|------------|
+| A           | 2021-01-07 |
+| B           | 2021-01-09 |
+
+</div>
+
 ## Entity Relationship Diagram
-![alt text](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case_Study_1-Danny's_Dinner/Case1Rela.png)
+![alt text](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case_Study_1-Danny's_Dinner/images/Case1Rela.png)
 
 ## Case Study Questions
 1. What is the total amount each customer spent at the restaurant?

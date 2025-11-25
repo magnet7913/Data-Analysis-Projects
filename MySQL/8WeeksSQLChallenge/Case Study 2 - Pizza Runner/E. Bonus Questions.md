@@ -5,9 +5,10 @@
 The pizza_names and pizza_recipes tables must be updated
 
 ```sql
-insert into pizza_names (pizza_id, pizza_name)
-values (3,'Supreme')
-;
+INSERT INTO
+  pizza_names (pizza_id, pizza_name)
+VALUES
+  (3, 'Supreme');
 ```
 | pizza_id | pizza_name  |
 |---------:|-------------|
@@ -16,9 +17,10 @@ values (3,'Supreme')
 | 3        | Supreme     |
 
 ```sql
-insert into pizza_recipes (pizza_id, toppings)
-values(3, '1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12')
-;
+INSERT INTO
+  pizza_recipes (pizza_id, toppings)
+VALUES
+  (3, '1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12');
 ```
 | pizza_id | orders |
 |---------:|--------|
