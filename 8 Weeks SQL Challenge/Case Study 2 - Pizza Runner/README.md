@@ -118,7 +118,7 @@ Key datasets for this case study
 </div>
 
 ## Entity Relationship Diagram
-![alt text](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case%20Study%202%20-%20Pizza%20Runner/images/Case2Rela.png)
+![alt text](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%202%20-%20Pizza%20Runner/images/Case2Rela.png)
 
 ## Data Clean
 There are some known data issues with few tables. Data cleaning was performed and saved in temporary tables before attempting the case study.
@@ -135,9 +135,9 @@ There are some known data issues with few tables. Data cleaning was performed an
 - In the cancellation column, there are blank spaces and null values.
 
 ## Case Study Solutions
-- [Data cleaning](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case%20Study%202%20-%20Pizza%20Runner/0.%20Data%20Cleaning.md)
-- [A. Pizza Metrics](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case%20Study%202%20-%20Pizza%20Runner/A.%20Pizza%20metrics.md)
-- [B. Runner and Customer Experience](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case%20Study%202%20-%20Pizza%20Runner/B.%20Runner%20and%20Customer%20Experience.md)
-- [C. Ingredient Optimisation](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case%20Study%202%20-%20Pizza%20Runner/C.%20Ingredient%20Optimisation.md)
-- [D. Pricing and Ratings](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case%20Study%202%20-%20Pizza%20Runner/D.%20Pricing%20and%20Ratings.md)
-- [E. Bonus Questions](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case%20Study%202%20-%20Pizza%20Runner/E.%20Bonus%20Questions.md)
+- [Data cleaning](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%202%20-%20Pizza%20Runner/0.%20Data%20Cleaning.md)
+- [A. Pizza Metrics](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%202%20-%20Pizza%20Runner/A.%20Pizza%20metrics.md)
+- [B. Runner and Customer Experience](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%202%20-%20Pizza%20Runner/B.%20Runner%20and%20Customer%20Experience.md)
+- [C. Ingredient Optimisation](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%202%20-%20Pizza%20Runner/C.%20Ingredient%20Optimisation.md)
+- [D. Pricing and Ratings](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%202%20-%20Pizza%20Runner/D.%20Pricing%20and%20Ratings.md)
+- [E. Bonus Questions](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%202%20-%20Pizza%20Runner/E.%20Bonus%20Questions.md)

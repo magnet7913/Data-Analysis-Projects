@@ -30,3 +30,7 @@ Finally, this is NOT an MS Excel/spreadsheet exercise. Excel is an important dat
 - Provide all code, including what you used to create the database and import data, and answers related to each question immediately below the question.
 - Feel free to leave lots of notes/comments to help us understand your work.
 - When you are ready, reply to this email and attach your results.
+
+### Questions and Solutions
+
+[Questions and solutions for this project could be found here!](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/BrainTree%20SQL%20Challenge/Solution.md)

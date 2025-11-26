@@ -83,9 +83,8 @@ Customer transaction table stores all customer deposits, withdrawals and purchas
 </div>
  
 ## Entity Relationship Diagram
-![image](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case%20Study%204%20-%20Data%20Bank/images/Case4Rela.png)
+![image](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%204%20-%20Data%20Bank/images/Case4Rela.png)
   
 ## Case Study Solutions
-- [A. Customer Nodes Exploration]()
-- [B. Customer Transactions]()
-- [C. Data Allocation Challenge]()
+- [A. Customer Nodes Exploration](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%204%20-%20Data%20Bank/A.%20Customer%20Nodes%20Exploration.md)
+- [B. Customer Transactions](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%204%20-%20Data%20Bank/B.%20Customer%20Transactions.md)

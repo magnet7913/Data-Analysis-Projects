@@ -74,8 +74,8 @@ There are 5 customer plans:
 </div>
 
 ## Entity Relationship Diagram
-![alt text](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case%20Study%203%20-%20Foodie-Fi/images/Case3Rela.png)
+![alt text](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%203%20-%20Foodie-Fi/images/Case3Rela.png)
 
 ## Case Study Solutions
-- [A. Customer Journey](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case%20Study%203%20-%20Foodie-Fi/A.%20Customer%20Journey.md)
-- [B. Data Analysis Questions](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/MySQL/8WeeksSQLChallenge/Case%20Study%203%20-%20Foodie-Fi/B.%20Data%20Analysis%20Questions.md)
+- [A. Customer Journey](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%203%20-%20Foodie-Fi/A.%20Customer%20Journey.md)
+- [B. Data Analysis Questions](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%203%20-%20Foodie-Fi/B.%20Data%20Analysis%20Questions.md)
