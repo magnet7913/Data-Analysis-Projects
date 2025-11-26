@@ -12,9 +12,9 @@ Each case-study folder contains the following files
 - Solutions are coded in **MySQL**
 
 ## Challenge case studies
-* [Case Study #1 - Danny's Diner](https://github.com/magnet7913/Data-Analysis-Projects/tree/main/8 Weeks SQL Challenge/Case%20Study%201%20-%20Danny's%20Dinner)
-* [Case Study #2 - Pizza Runner](https://github.com/magnet7913/Data-Analysis-Projects/tree/main/8 Weeks SQL Challenge/Case%20Study%202%20-%20Pizza%20Runner)
-* [Case Study #3 - Foodie-Fi](https://github.com/magnet7913/Data-Analysis-Projects/tree/main/8 Weeks SQL Challenge/Case%20Study%203%20-%20Foodie-Fi)
-* [Case Study #4 - Data Bank](https://github.com/magnet7913/Data-Analysis-Projects/tree/main/8 Weeks SQL Challenge/Case%20Study%204%20-%20Data%20Bank)
+* [Case Study #1 - Danny's Diner](https://github.com/magnet7913/Data-Analysis-Projects/tree/main/8%20Weeks%20SQL%20Challenge/Case%20Study%201%20-%20Danny's%20Dinner)
+* [Case Study #2 - Pizza Runner](https://github.com/magnet7913/Data-Analysis-Projects/tree/main/8%20Weeks%20SQL%20Challenge/Case%20Study%202%20-%20Pizza%20Runner)
+* [Case Study #3 - Foodie-Fi](https://github.com/magnet7913/Data-Analysis-Projects/tree/main/8%20Weeks%20SQL%20Challenge/Case%20Study%203%20-%20Foodie-Fi)
+* [Case Study #4 - Data Bank](https://github.com/magnet7913/Data-Analysis-Projects/tree/main/8%20Weeks%20SQL%20Challenge/Case%20Study%204%20-%20Data%20Bank)
 
 ## Do drop a comment if you find this repo helpful or would like to improve my queries :)
