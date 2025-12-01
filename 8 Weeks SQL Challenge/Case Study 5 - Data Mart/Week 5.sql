@@ -64,23 +64,82 @@ year(week_date) as calendar_year,
 -- 2. Data Exploration
 
 --     What day of the week is used for each week_date value?
+select weekday(week_date), count(*) from clean_weekly_sales
+group by 1
+;
+-- 100% result is 0, then only MOnday is used for each week_date value
+
 --     What range of week numbers are missing from the dataset?
+select distinct(week_number) from clean_weekly_sales
+;
+-- The dataset ran continuously from week 12 to 35. Missing week 1 to 11 and week 36 to 53
+
 --     How many total transactions were there for each year in the dataset?
+select calendar_year, count(*) transaction_count from clean_weekly_sales
+group by 1
+;
 --     What is the total sales for each region for each month?
+select region, calendar_year, month_number, count(*) transaction_count from clean_weekly_sales
+group by 1,2,3
+order by 1,2,3
+;
+
 --     What is the total count of transactions for each platform
+select platform, count(*) transaction_count from clean_weekly_sales
+group by 1
+order by 1
+;
+
 --     What is the percentage of sales for Retail vs Shopify for each month?
+select calendar_year, month_number, platform, sum(sales) total_sales, concat(round(sum(sales) / sum(sum(sales)) over(partition by calendar_year, month_number) * 100,1),' %') as ratio
+from clean_weekly_sales
+group by 1,2,3
+order by 1,2,3
+;
+
 --     What is the percentage of sales by demographic for each year in the dataset?
+select calendar_year, demographic, sum(sales) total_sales, concat(round(sum(sales) / sum(sum(sales)) over(partition by calendar_year) * 100,1),' %') as ratio
+from clean_weekly_sales
+group by 1,2
+order by 1,2
+;
+
 --     Which age_band and demographic values contribute the most to Retail sales?
+-- If you would take age_band and demographic seperatly
+-- Then for age_band
+select age_band, sum(sales) revenue
+from clean_weekly_sales
+where platform = 'retail'
+group by 1
+order by 2 desc
+;
+-- For Demographic
+select demographic, sum(sales) revenue
+from clean_weekly_sales
+where platform = 'retail'
+group by 1
+order by 2 desc
+;
+-- If both at the same time
+
+select age_band,demographic, sum(sales) revenue
+from clean_weekly_sales
+where platform = 'retail'
+group by 1,2
+order by 3 desc
+;
+
 --     Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify? If not - how would you calculate it instead?
+select platform, calendar_year, sum(sales) / sum(transactions) as not_using_avg_transaction, avg(avg_transaction) as using_avg_transaction
+from clean_weekly_sales
+group by 2,1
+order by 1,2
+-- In this result the not_using_avg_transaction is far different from using avg_transaction. In this case I would use the sum(sales) / sum (transactions) for better accuracy
 
 -- 3. Before & After Analysis
-
 -- This technique is usually used when we inspect an important event and want to inspect the impact before and after a certain point in time.
-
 -- Taking the week_date value of 2020-06-15 as the baseline week where the Data Mart sustainable packaging changes came into effect.
-
 -- We would include all week_date values for 2020-06-15 as the start of the period after the change and the previous week_date values would be before
-
 -- Using this analysis approach - answer the following questions:
 
 --     What is the total sales for the 4 weeks before and after 2020-06-15? What is the growth or reduction rate in actual values and percentage of sales?
