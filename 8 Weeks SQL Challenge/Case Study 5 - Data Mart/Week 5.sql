@@ -49,7 +49,7 @@ year(week_date) as calendar_year,
                     'Middle Aged',
                     'Retirees',
                     'Retirees'),
-            '') AS age_band,
+            'unknown') AS age_band,
     COALESCE(ELT(FIELD(SUBSTRING(segment, 1, 1), 'C', 'F'),
                     'Couples',
                     'Families'),
@@ -134,6 +134,7 @@ select platform, calendar_year, sum(sales) / sum(transactions) as not_using_avg_
 from clean_weekly_sales
 group by 2,1
 order by 1,2
+;
 -- In this result the not_using_avg_transaction is far different from using avg_transaction. In this case I would use the sum(sales) / sum (transactions) for better accuracy
 
 -- 3. Before & After Analysis
@@ -143,8 +144,75 @@ order by 1,2
 -- Using this analysis approach - answer the following questions:
 
 --     What is the total sales for the 4 weeks before and after 2020-06-15? What is the growth or reduction rate in actual values and percentage of sales?
+select distinct(week_date), abs(round(datediff(week_date,'2020-06-15')/7)) as week_diff from clean_weekly_sales
+where abs(round(datediff(week_date,'2020-06-15')/7)) <= 4
+order by 1 asc
+;
+-- Since our dataset is weekly based, and the week 2020-06-15 is the base line, then the 4 weeks after the change should be from 2020-06-15 to 2020-07-06.
+-- And for 4 weeks before the change should be from 2020-05-18 upto 2020-06-8 
+SELECT 
+    sales_4_weeks_bfr, sales_4_weeks_aft, concat(round((sales_4_weeks_aft/sales_4_weeks_bfr - 1)*100,2)," %") changes_compare_to_before
+FROM
+    (SELECT 
+        SUM(sales) sales_4_weeks_bfr
+    FROM
+        clean_weekly_sales
+    WHERE
+        ROUND(DATEDIFF(week_date, '2020-06-15') / 7) between -4 and -1
+            ) a
+        CROSS JOIN
+    (SELECT 
+        SUM(sales) sales_4_weeks_aft
+    FROM
+        clean_weekly_sales
+    WHERE
+       ROUND(DATEDIFF(week_date, '2020-06-15') / 7) between 0 and 3
+            ) b
+;
+-- The sales result for 4 weeks after the change went down by -1.15%
+
 --     What about the entire 12 weeks before and after?
+SELECT 
+    sales_12_weeks_bfr, sales_12_weeks_aft, concat(round((sales_12_weeks_aft/sales_12_weeks_bfr - 1)*100,2)," %") changes_compare_to_before
+FROM
+    (SELECT 
+        SUM(sales) sales_12_weeks_bfr
+    FROM
+        clean_weekly_sales
+    WHERE
+         ROUND(DATEDIFF(week_date, '2020-06-15') / 7) between -12 and -1
+            ) a
+        CROSS JOIN
+    (SELECT 
+        SUM(sales) sales_12_weeks_aft
+    FROM
+        clean_weekly_sales
+    WHERE
+         ROUND(DATEDIFF(week_date, '2020-06-15') / 7) between 0 and 11
+            ) b
+;
+-- Sales result from 12 weeks after the change went down by -2.14% !
+
 --     How do the sale metrics for these 2 periods before and after compare with the previous years in 2018 and 2019?
+-- After doing halfway through, I realized i can just use the week_number and still delivered the same result
+select distinct(week_number) from clean_weekly_sales
+where week_date = '2020-06-15'
+;
+-- '2020-06-15' is week 25
+-- For the 4 weeks before, I can just query the result from week_number 21 to 24 and 4 weeks after from week_number 25 - 28
+-- 12 weeks before is week_number 13 - 24 and 12 weeks after is week_number 25 - 36
+select calendar_year,
+sum(case when week_number between 21 and 24 then sales else 0 end) 4_wk_bf,
+sum(case when week_number between 25 and 28 then sales else 0 end) 4_wk_af,
+sum(case when week_number between 13 and 24 then sales else 0 end) 12_wk_bf,
+sum(case when week_number between 25 and 36 then sales else 0 end) 12_wk_af
+from 
+clean_weekly_sales
+group by 1
+;
+-- In 2019 , the 4 weeks period shows a 0.10% increment in sales, while the 12 weeks period showed a -0.30% decreasement in sales
+-- In 2018, the 4 weeks period shows a 0.19% increment in sales, while the 12 weeks period showed a 1.63% increment in sales
+-- Meaning in this metric, the drop in sales in 2020 is more severe than both 2018 and 2019 (-1.15% for 4 weeks and -2.14% for 12 weeks).
 
 -- 4. Bonus Question
 
@@ -156,4 +224,74 @@ order by 1,2
 --     demographic
 --     customer_type
 
+with cte1 as (select 'region' as area, region, -- by region
+sum(case when week_number between 13 and 24 then sales else 0 end) 12_wk_bf,
+sum(case when week_number between 25 and 36 then sales else 0 end) 12_wk_af,
+round(((sum(case when week_number between 25 and 36 then sales else 0 end)/sum(case when week_number between 13 and 24 then sales else 0 end))-1)*100,2) changes
+ from clean_weekly_sales
+where calendar_year = 2020
+group by 2
+order by 5 asc
+limit 1)
+,
+cte2 as (
+select 'platform' as area, platform, -- by platform
+sum(case when week_number between 13 and 24 then sales else 0 end) 12_wk_bf,
+sum(case when week_number between 25 and 36 then sales else 0 end) 12_wk_af,
+round(((sum(case when week_number between 25 and 36 then sales else 0 end)/sum(case when week_number between 13 and 24 then sales else 0 end))-1)*100,2) changes
+ from clean_weekly_sales
+where calendar_year = 2020
+group by 2
+order by 5 asc
+limit 1)
+,
+cte3 as (
+select 'age_band' as area, age_band, -- by age_band
+sum(case when week_number between 13 and 24 then sales else 0 end) 12_wk_bf,
+sum(case when week_number between 25 and 36 then sales else 0 end) 12_wk_af,
+round(((sum(case when week_number between 25 and 36 then sales else 0 end)/sum(case when week_number between 13 and 24 then sales else 0 end))-1)*100,2) changes
+ from clean_weekly_sales
+where calendar_year = 2020
+group by 2
+order by 5 asc
+limit 1)
+,
+cte4 as (
+select 'democraphic' as area, demographic, -- by demographic
+sum(case when week_number between 13 and 24 then sales else 0 end) 12_wk_bf,
+sum(case when week_number between 25 and 36 then sales else 0 end) 12_wk_af,
+round(((sum(case when week_number between 25 and 36 then sales else 0 end)/sum(case when week_number between 13 and 24 then sales else 0 end))-1)*100,2) changes
+ from clean_weekly_sales
+where calendar_year = 2020
+group by 2
+order by 5 asc
+limit 1)
+,
+cte5 as (
+select 'customer_type' as area, customer_type, -- by customer_type
+sum(case when week_number between 13 and 24 then sales else 0 end) 12_wk_bf,
+sum(case when week_number between 25 and 36 then sales else 0 end) 12_wk_af,
+round(((sum(case when week_number between 25 and 36 then sales else 0 end)/sum(case when week_number between 13 and 24 then sales else 0 end))-1)*100,2) changes
+ from clean_weekly_sales
+where calendar_year = 2020
+group by 2
+order by 5 asc
+limit 1
+)
+select * from cte1
+union all
+select * from cte2
+union all
+select * from cte3
+union all
+select * from cte4
+union all
+select * from cte5
+order by 5
+;
+
 -- Do you have any further recommendations for Danny’s team at Data Mart or any interesting insights based off this analysis?
+-- I would recommend that the team fix the "unknown" problem in their data capturing process, as this group (demographic and age_band) represented a 40% of sales. By profiling their customers more accurately, better and more actionable insights could be derived.
+-- The "guest" customer segment is the most affected by the packaging changes. I would recommend conducting a survey for this group of customers to determine the best packaging options for the next implementation.
+-- The Retail platform is where the majority of revenue came from (over 96%). Even a small drop in sales could translate into millions in lost revenue. I would recommend conducting in-store surveys to capture shopper feedback.
+-- The customer backlash during the 12-week period is clear, but Data Mart should follow up with another quarterly, semi-annual, and annual report to see if sales bounce back.
