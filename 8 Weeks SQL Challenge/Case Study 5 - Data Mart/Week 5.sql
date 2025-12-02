@@ -64,13 +64,13 @@ year(week_date) as calendar_year,
 -- 2. Data Exploration
 
 --     What day of the week is used for each week_date value?
-select weekday(week_date), count(*) from clean_weekly_sales
-group by 1
+select distinct(weekday(week_date)) as week_date from clean_weekly_sales
 ;
--- 100% result is 0, then only MOnday is used for each week_date value
+-- 100% result is 0, then only Monday is used for each week_date value
 
 --     What range of week numbers are missing from the dataset?
 select distinct(week_number) from clean_weekly_sales
+order by 1
 ;
 -- The dataset ran continuously from week 12 to 35. Missing week 1 to 11 and week 36 to 53
 
@@ -78,6 +78,7 @@ select distinct(week_number) from clean_weekly_sales
 select calendar_year, count(*) transaction_count from clean_weekly_sales
 group by 1
 ;
+
 --     What is the total sales for each region for each month?
 select region, calendar_year, month_number, count(*) transaction_count from clean_weekly_sales
 group by 1,2,3
@@ -201,14 +202,27 @@ where week_date = '2020-06-15'
 -- '2020-06-15' is week 25
 -- For the 4 weeks before, I can just query the result from week_number 21 to 24 and 4 weeks after from week_number 25 - 28
 -- 12 weeks before is week_number 13 - 24 and 12 weeks after is week_number 25 - 36
-select calendar_year,
-sum(case when week_number between 21 and 24 then sales else 0 end) 4_wk_bf,
-sum(case when week_number between 25 and 28 then sales else 0 end) 4_wk_af,
-sum(case when week_number between 13 and 24 then sales else 0 end) 12_wk_bf,
-sum(case when week_number between 25 and 36 then sales else 0 end) 12_wk_af
-from 
-clean_weekly_sales
-group by 1
+SELECT 
+    calendar_year,
+    SUM(CASE
+        WHEN week_number BETWEEN 21 AND 24 THEN sales
+        ELSE 0
+    END) 4_wk_bf,
+    SUM(CASE
+        WHEN week_number BETWEEN 25 AND 28 THEN sales
+        ELSE 0
+    END) 4_wk_af,
+    SUM(CASE
+        WHEN week_number BETWEEN 13 AND 24 THEN sales
+        ELSE 0
+    END) 12_wk_bf,
+    SUM(CASE
+        WHEN week_number BETWEEN 25 AND 36 THEN sales
+        ELSE 0
+    END) 12_wk_af
+FROM
+    clean_weekly_sales
+GROUP BY 1
 ;
 -- In 2019 , the 4 weeks period shows a 0.10% increment in sales, while the 12 weeks period showed a -0.30% decreasement in sales
 -- In 2018, the 4 weeks period shows a 0.19% increment in sales, while the 12 weeks period showed a 1.63% increment in sales
