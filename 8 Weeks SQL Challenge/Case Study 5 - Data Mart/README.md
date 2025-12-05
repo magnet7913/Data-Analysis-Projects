@@ -49,7 +49,7 @@ Each record in the dataset is related to a specific aggregated slice of the unde
 | 25/7/18    | SOUTH AMERICA | Retail    | null    | New           | 2136         | 81757.91    |
 
 ## Case Study Solutions
-- [A. Data Cleansing Steps]()
-- [B. Data Exploration]()
-- [C. Before & After Analysis]()
-- [D. Bonus Question]()
+- [A. Data Cleansing Steps](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%205%20-%20Data%20Mart/A.%20Data%20Cleansing%20Steps.md)
+- [B. Data Exploration](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%205%20-%20Data%20Mart/B.%20Data%20Exploration.md)
+- [C. Before & After Analysis](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%205%20-%20Data%20Mart/C.%20Before%20%26%20After%20Analysis.md)
+- [D. Bonus Question](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%205%20-%20Data%20Mart/D.%20Bonus%20Question.md)
