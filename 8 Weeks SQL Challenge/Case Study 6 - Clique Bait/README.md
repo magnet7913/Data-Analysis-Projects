@@ -17,7 +17,7 @@ In this case study - you are required to support Danny’s vision and analyse hi
 
 ## Enterprise Relationship Diagram
 
-![image]()
+![image](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%206%20-%20Clique%20Bait/images/Case6Rela.png)
 
 ## Dataset used
 For this case study there is a total of 5 datasets which you will need to combine to solve all of the questions.
@@ -91,6 +91,6 @@ The sequence_number is used to order the events within each visit.
 | 13      | Confirmation       | null             | null       |
 
 ## Case Study Solutions
-- [A. Digital Analysis]()
-- [B. Product Funnel Analysis]()
-- [C. Campaigns Analysis]()
+- [A. Digital Analysis](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%206%20-%20Clique%20Bait/A.%20Digital%20Analysis.md)
+- [B. Product Funnel Analysis](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%206%20-%20Clique%20Bait/B.%20Product%20Funnel%20Analysis.md)
+- [C. Campaigns Analysis](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%206%20-%20Clique%20Bait/C.%20ampaigns%20Analysis.md)
