@@ -228,7 +228,7 @@ LIMIT
 
 ***
 
-> What is the average conversion rate from view to cart add?
+- What is the average conversion rate from view to cart add?
 
 ```sql
 SELECT
@@ -241,7 +241,8 @@ FROM
 | conversion_rate |
 |-----------------|
 | 60.93           |
-- The conversion rate was 60.93%
+
+> The conversion rate was 60.93%
 
 ***
 
