@@ -1,10 +1,10 @@
 ## Case Study #6: Clique Bait - Product Funnel Analysis
 
 Using a single SQL query - create a new output table which has the following details:
-    How many times was each product viewed?
-    How many times was each product added to cart?
-    How many times was each product added to a cart but not purchased (abandoned)?
-    How many times was each product purchased?
+- How many times was each product viewed?
+- How many times was each product added to cart?
+- How many times was each product added to a cart but not purchased (abandoned)?
+- How many times was each product purchased?
 
 ```sql
 -- For question 3 and 4, i would also do them on cookie_id basis
@@ -118,9 +118,9 @@ ORDER BY
 
 ***
 
-Additionally, create another table which further aggregates the data for the above points but this time for each product category instead of individual products.
+- Additionally, create another table which further aggregates the data for the above points but this time for each product category instead of individual products.
 
-- This could be done by simply change the final query from page_name to product_category and sum other metric
+> This could be done by simply change the final query from page_name to product_category and sum other metric
 
 ```sql
 SELECT
@@ -157,7 +157,7 @@ Use your 2 new output tables - answer the following questions:
     What is the average conversion rate from view to cart add?
     What is the average conversion rate from cart add to purchase?
 
-- I adjust the previous query and add the 'final' cte to save time:
+- I adjusted the previous query and add the 'final' cte to save time:
 
 ```sql
 final AS (
@@ -176,11 +176,11 @@ final AS (
 )
 ```
 
-    Which product had the most views, cart adds and purchases?
-- Lobster had the most cart_add and purchased
-- Oyster had the most views
+- Which product had the most views, cart adds and purchases?
+> Lobster had the most cart_add and purchased
+> Oyster had the most views
 
-    Which product was most likely to be abandoned?
+- Which product was most likely to be abandoned?
 
 ```sql
 SELECT
@@ -200,11 +200,11 @@ LIMIT
 |----------------|----------------|
 | Russian Caviar | 15.01          |
 
-- The product was most likely to be abandoned is Russian Caviar at 15.01% abandoned rate
+> The product was most likely to be abandoned is Russian Caviar at 15.01% abandoned rate
 
 ***
 
-    Which product had the highest view to purchase percentage?
+- Which product had the highest view to purchase percentage?
 
 ```sql
 SELECT
@@ -224,11 +224,11 @@ LIMIT
 |---------|---------------------|
 | Lobster | 51.26               |
 
-- The product had the highest view to purchase percentage is Lobster at 51.26%
+> The product had the highest view to purchase percentage is Lobster at 51.26%
 
 ***
 
-    What is the average conversion rate from view to cart add?
+> What is the average conversion rate from view to cart add?
 
 ```sql
 SELECT
@@ -245,7 +245,7 @@ FROM
 
 ***
 
-    What is the average conversion rate from cart add to purchase?
+- What is the average conversion rate from cart add to purchase?
 
 ```sql
 SELECT
@@ -260,6 +260,6 @@ FROM
 |-----------------|
 | 81.15           |
 
-- The conversion rate was 81.15%
+> The conversion rate was 81.15%
 
 ***
