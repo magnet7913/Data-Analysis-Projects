@@ -1,4 +1,4 @@
-## Case Study #6: Balanced Tree Clothing Co. - High Level Sales Analysis
+## Case Study #7: Balanced Tree Clothing Co. - High Level Sales Analysis
 
 1. What was the total quantity sold for all products?
 2. What is the total generated revenue for all products before discounts?

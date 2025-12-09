@@ -1,4 +1,4 @@
-## Case Study #6: Balanced Tree Clothing Co. - Product Analysis
+## Case Study #7: Balanced Tree Clothing Co. - Product Analysis
 
 1. What are the top 3 products by total revenue before discount?
 2. What is the total quantity, revenue and discount for each segment?

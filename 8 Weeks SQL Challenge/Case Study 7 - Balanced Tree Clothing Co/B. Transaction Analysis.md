@@ -1,4 +1,4 @@
-## Case Study #6: Balanced Tree Clothing Co. - Transaction Analysis
+## Case Study #7: Balanced Tree Clothing Co. - Transaction Analysis
 
 1. How many unique transactions were there?
 2. What is the average unique products purchased in each transaction?
