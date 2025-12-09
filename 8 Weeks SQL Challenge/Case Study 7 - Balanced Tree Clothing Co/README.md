@@ -92,8 +92,8 @@ balanced_tree.product_prices
 | 18 | 2feb6b     | 29    |
 
 ## Case Study Solutions
-- [A. High Level Sales Analysis]()
-- [B. Transaction Analysis]()
-- [C. Product Analysis]()
-- [D. Reporting Challenge]()
-- [E. Bonus Challenge]()
+- [A. High Level Sales Analysis](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%207%20-%20Balanced%20Tree%20Clothing%20Co/A.%20High%20Level%20Sales%20Analysis.md)
+- [B. Transaction Analysis](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%207%20-%20Balanced%20Tree%20Clothing%20Co/B.%20Transaction%20Analysis.md)
+- [C. Product Analysis](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%207%20-%20Balanced%20Tree%20Clothing%20Co/C.%20Product%20Analysis.md)
+- [D. Reporting Challenge](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%207%20-%20Balanced%20Tree%20Clothing%20Co/D.%20Reporting%20Challenge.md)
+- [E. Bonus Challenge](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%207%20-%20Balanced%20Tree%20Clothing%20Co/E.%20Bonus%20Challenge.md)

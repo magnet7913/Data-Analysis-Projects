@@ -148,6 +148,7 @@ segment_name,
 round(total_raw_revenue/sum(total_raw_revenue) over (partition by category_name)*100,2) percentage_split
 from raw_revenue
 ;
+
 --     What is the percentage split of total revenue by category?
 with raw_revenue as (select category_name, sum(qty*s.price) total_raw_revenue
 from sales s
@@ -160,6 +161,62 @@ from raw_revenue
 ;
 
 --     What is the total transaction “penetration” for each product? (hint: penetration = number of transactions where at least 1 quantity of a product was purchased divided by total number of transactions)
-
+with t1 as (
+select product_name, count(*) appearance
+from sales s
+join product_details pd
+on pd.product_id = s.prod_id
+group by 1),
+t2 as (
+select count(distinct(txn_id)) total
+from sales)
+select product_name, round(appearance / total * 100, 2 ) penetration_rate
+from t1 join t2
+order by 2 desc
+;
 
 --     What is the most common combination of at least 1 quantity of any 3 products in a 1 single transaction?
+-- I believe this could be dont by getting all possible combinations of 3 products together then group them by txn_id and count how many time each combination appeared
+with p as (select txn_id tid, product_name pn
+from sales s
+join product_details pd
+on s.prod_id = pd.product_id
+),
+combine as (select p.pn pn1, p1.pn pn2, p2.pn pn3, count(*) tpt, row_number() over (order by count(*) desc) rn
+from p
+join p p1 on p.tid = p1.tid
+and p.pn != p1.pn
+and p.pn < p1.pn
+join p p2 on p.tid = p2.tid
+and p.pn != p2.pn
+and p1.pn != p2.pn
+and p.pn < p2.pn
+and p1.pn < p2.pn
+group by 1,2,3)
+select pn1 product_1, pn2 product_2, pn3 product_3, tpt times_purchased_together
+from combine 
+where rn = 1
+;
+
+-- Use a single SQL query to transform the product_hierarchy and product_prices datasets to the product_details table.
+-- Hint: you may want to consider using a recursive CTE to solve this problem!
+
+-- Recursive CTE would be overkilled for this question. Just join the table with itself a few times would be enough :)
+SELECT 
+    product_id,
+    price,
+    concat(ph2.level_text," ",ph.level_text," - ",ph3.level_text) product_name,
+    ph3.id category_id,
+    ph2.id segment_id,
+    ph.id style_id,
+    ph3.level_text category_name,
+     ph2.level_text segment_name,
+    ph.level_text style_name
+FROM
+    product_prices pp
+        LEFT JOIN
+    product_hierarchy ph ON pp.id = ph.id
+        LEFT JOIN
+    product_hierarchy ph2 ON ph.parent_id = ph2.id
+        LEFT JOIN
+    product_hierarchy ph3 ON ph2.parent_id = ph3.id
