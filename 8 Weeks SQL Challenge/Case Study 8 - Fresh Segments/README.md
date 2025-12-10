@@ -66,7 +66,7 @@ The ranking and percentage_ranking relates to the order of index_value records i
 | 13 | Advertising Professionals   | People who read advertising industry news.                                       | 2016-05-26 14:57:59  | 2018-05-23 11:30:12  |
 
 ## Case Study Solutions
-- [A. Data Exploration and Cleansing]()
-- [B. Interest Analysis]()
-- [C. Segment Analysis]()
-- [D. Index Analysis]()
+- [A. Data Exploration and Cleansing](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%208%20-%20Fresh%20Segments/A.%20Data%20Exploration%20and%20Cleansing.md)
+- [B. Interest Analysis](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%208%20-%20Fresh%20Segments/B.%20Interest%20Analysis.md)
+- [C. Segment Analysis](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%208%20-%20Fresh%20Segments/C.%20Segment%20Analysis.md)
+- [D. Index Analysis](https://github.com/magnet7913/Data-Analysis-Projects/blob/main/8%20Weeks%20SQL%20Challenge/Case%20Study%208%20-%20Fresh%20Segments/D.%20Index%20Analysis.md)

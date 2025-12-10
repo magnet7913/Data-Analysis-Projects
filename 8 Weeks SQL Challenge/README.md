@@ -19,4 +19,6 @@ Each case-study folder contains the following files
 * [Case Study #5 - Data Mart](https://github.com/magnet7913/Data-Analysis-Projects/tree/main/8%20Weeks%20SQL%20Challenge/Case%20Study%205%20-%20Data%20Mart)
 * [Case Study #6 - Clique Bait](https://github.com/magnet7913/Data-Analysis-Projects/tree/main/8%20Weeks%20SQL%20Challenge/Case%20Study%206%20-%20Clique%20Bait)
 * [Case Study #7 - Balanced Tree Clothing Co.](https://github.com/magnet7913/Data-Analysis-Projects/tree/main/8%20Weeks%20SQL%20Challenge/Case%20Study%207%20-%20Balanced%20Tree%20Clothing%20Co)
+* [Case Study #8 - Fresh Segments](https://github.com/magnet7913/Data-Analysis-Projects/tree/main/8%20Weeks%20SQL%20Challenge/Case%20Study%208%20-%20Fresh%20Segments)
+
 ## Do drop a comment if you find this repo helpful or would like to improve my queries :)
