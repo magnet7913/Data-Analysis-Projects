@@ -17,7 +17,7 @@ When a player installed the game, he or she was randomly assigned to either.
 
 ## Acknowledgements
 
-This dataset is taken from [DataCamp]{https://www.datacamp.com/projects/1611}
+This dataset is taken from [DataCamp](https://www.datacamp.com/projects/1611)
 Cookie Cat is a hugely popular mobile puzzle game developed by Tactile Entertainment
 
 Thanks to them for this dataset! 😻 
