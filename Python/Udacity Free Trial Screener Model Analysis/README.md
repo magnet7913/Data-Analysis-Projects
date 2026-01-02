@@ -10,13 +10,13 @@ The objective of this pop up is to set up a clear expectation from the student, 
 ## Hypothesis
 The Objective offers 3 hypothesis:
 
-    1/ Free Trial
+1/ Free Trial
 - H0: The change caused no statistically difference in new enrollment for the free trial
 - H1: The change caused a statistically difference in new enrollment for the free trial
--     2/ Drop out
+2/ Drop out
 - H0: The change caused no statistically difference in drop out during the free trial
 - H1: The change caused a statistically difference in drop out during the free trial
-    3/ Subscription
+3/ Subscription
 - H0: The change caused no statistically difference in new subscription after the free trial
 - H1: The change caused a statistically difference in new subscription after the free trial
 
@@ -353,9 +353,9 @@ print(f"Retention Chi-square p-value: {p_chi:.10f}")
 ## Based on the test result and the raw number:
 + Gross conversion P-value < 0.05, meaning there is a significant difference, experiment group has lower enrollment rate after clicks.
 + Retention P-value < 0.05, meaning there is a significant difference, experiment group as lower dropout rate during free-trial.
-+ Net converion P-value > 0.05, meaning there is no significant difference in payment after joining the free trial.
++ Net conversion P-value > 0.05, meaning there is no significant difference in payment after joining the free trial.
 
-## CONCLUSIONs:
+## Conclusions:
 + The change did increased the retention rate during the free trial but reducing potentially frustrated student from enrollment.
 + The change did not decrease the net conversion rate, the probability of a user who clicks "Start free trial" eventually pays remain the same.
 + Recommendation: Launch the change since it reached the set out milestones during the experiment run
